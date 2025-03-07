@@ -13,4 +13,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: "dist", // Ensures Vercel serves the built files correctly
+  }
 });
