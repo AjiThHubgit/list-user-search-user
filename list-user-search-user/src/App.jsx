@@ -8,14 +8,13 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchData(); // Fetch all users initially
+    fetchData();
   }, []);
 
-  // Fetch all users initially
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/users"); // Using Vite proxy
+      const response = await fetch("https://dummyjson.com/users"); // Direct API call
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -28,24 +27,22 @@ function App() {
     }
   };
 
-  // Debounced search using setTimeout
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if (search.trim() === "") {
-        fetchData(); // If search is empty, reload all users
+        fetchData();
       } else {
         fetchFilteredUsers(search);
       }
-    }, 500); // 500ms delay
+    }, 500);
 
-    return () => clearTimeout(delayDebounce); // Cleanup timeout
+    return () => clearTimeout(delayDebounce);
   }, [search]);
 
-  // Fetch filtered users based on search query
   const fetchFilteredUsers = async (query) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/users/search?q=${query}`); // Using Vite proxy
+      const response = await fetch(`https://dummyjson.com/users/search?q=${query}`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -77,7 +74,6 @@ function App() {
         </div>
       </div>
 
-      {/* User List */}
       <div className="container" style={{ marginTop: "90px" }}>
         {loading ? (
           <p className="text-center text-muted mt-3">Loading...</p>
