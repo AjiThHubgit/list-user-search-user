@@ -27,7 +27,6 @@ function App() {
   // Debounce function to delay API calls
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
-      console.log("Inside the setout function .....!!!");
       if (search.trim() === "") {
         fetchData(); // If search is empty, reload all users
       } else {
