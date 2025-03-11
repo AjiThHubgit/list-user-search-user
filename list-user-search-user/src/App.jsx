@@ -14,7 +14,7 @@ function App() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/users"); // Now using proxy `/api`
+      const response = await fetch('https://dummyjson.com/users'); // Now using proxy `/api`
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -42,7 +42,7 @@ function App() {
   const fetchFilteredUsers = async (query) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/users/search?q=${query}`); // Using proxy
+      const response = await fetch(`https://dummyjson.com/users/search?q=${query}`); // Using proxy
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
